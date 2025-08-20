@@ -1,0 +1,42 @@
+<%- include('partials/header.ejs'); -%>
+
+<!-- Hero Section -->
+<section class="hero">
+  <p>I read books and share the best insights from them. Here are my notes.</p>
+  <button
+    onclick="document.getElementById('books').scrollIntoView({behavior: 'smooth'});">
+    Browse Books
+  </button>
+</section>
+
+<!-- Books Library -->
+<section id="books" class="books-grid">
+  <!-- Sample Book Card -->
+  <article class="book-card">
+    <img
+      src="https://covers.openlibrary.org/b/isbn/1847941834-L.jpg"
+      alt="Book Cover"
+      class="book-thumb" />
+    <h3 class="book-title">Atomic Habits</h3>
+    <p class="book-author">James Clear</p>
+    <p class="book-meta">Date Read: Mar 2025</p>
+    <p class="rating">⭐⭐⭐⭐⭐ 9/10</p>
+    <button class="view-notes-btn">View Notes</button>
+  </article>
+  <!-- Repeat book cards as needed -->
+  <article class="book-card">
+    <img
+      src="https://covers.openlibrary.org/b/isbn/9780385533225-L.jpg"
+      alt="Book Cover"
+      class="book-thumb" />
+    <h3 class="book-title">Deep Work</h3>
+    <p class="book-author">Cal Newport</p>
+    <p class="book-meta">Date Read: Jan 2025</p>
+    <p class="rating">⭐⭐⭐⭐ 8/10</p>
+    <button class="view-notes-btn">View Notes</button>
+  </article>
+
+  <!-- Add more cards -->
+</section>
+
+<%- include('partials/footer.ejs'); -%>

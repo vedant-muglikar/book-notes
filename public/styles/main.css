@@ -1,0 +1,137 @@
+:root {
+  --bg-light: #ffffff;
+  --text-light: #222222;
+  --accent: #4f46e5;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --card-radius: 12px;
+  --font-family: "Inter", "Roboto", "Open Sans", sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  background-color: var(--bg-light);
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+header {
+  padding: 1rem 2rem;
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: var(--accent);
+  border-bottom: 1px solid #eee;
+}
+
+main {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.hero p {
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero button {
+  background-color: var(--accent);
+  border: none;
+  color: white;
+  padding: 0.8rem 1.8rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.hero button:hover {
+  background-color: #4338ca; /* darker indigo */
+}
+
+/* Books Grid */
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
+  gap: 1.5rem;
+}
+
+.book-card {
+  background: white;
+  border-radius: var(--card-radius);
+  box-shadow: 0 2px 6px var(--shadow);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: box-shadow 0.3s ease;
+}
+
+.book-card:hover {
+  box-shadow: 0 4px 12px var(--shadow);
+}
+
+.book-thumb {
+  height: 15rem;
+  width: 10rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  background: #f0f0f0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.book-thumb img {
+  height: 100%;
+  width: auto;
+  object-fit: cover;
+  display: block;
+}
+
+.book-title {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin: 0 0 0.3rem 0;
+  color: var(--accent);
+}
+
+.book-author {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.book-meta {
+  font-size: 0.85rem;
+  color: #777;
+  margin-bottom: 0.8rem;
+}
+
+.rating {
+  color: #f59e0b; /* amber for stars */
+  margin-bottom: 1rem;
+}
+
+.view-notes-btn {
+  background-color: var(--accent);
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+
+.view-notes-btn:hover {
+  background-color: #4338ca;
+}
