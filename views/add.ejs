@@ -1,0 +1,27 @@
+<%- include('partials/header.ejs'); -%>
+<h2>Add a New Book</h2>
+<form action="/add-book" method="post">
+  <label for="name">Name of the Book</label>
+  <input type="text" name="name" id="name" required />
+
+  <label for="notes">Notes</label>
+  <textarea
+    name="notes"
+    id="notes"
+    rows="4"
+    placeholder="Write your notes about the book here..."></textarea>
+
+  <label for="rating">Rating</label>
+  <select name="rating" id="rating" required>
+    <option value="" disabled selected>Select a rating</option>
+    <option value="1">1 - Poor</option>
+    <option value="2">2 - Fair</option>
+    <option value="3">3 - Good</option>
+    <option value="4">4 - Very Good</option>
+    <option value="5">5 - Excellent</option>
+  </select>
+
+  <button type="submit">Add Book</button>
+</form>
+
+<%- include('partials/footer.ejs'); -%>
