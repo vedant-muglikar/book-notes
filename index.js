@@ -34,10 +34,6 @@ async function getBook(id) {
   return res;
 }
 
-// app.get("/", async (req, res) => {
-//   res.render("index.ejs");
-// });
-
 app.get("/", async (req, res) => {
   await checkList();
   res.render("index.ejs", { books: items });

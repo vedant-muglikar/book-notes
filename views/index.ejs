@@ -20,7 +20,12 @@
       alt="Book Cover"
       class="book-thumb" />
     <h3 class="book-title"><%= book.title %></h3>
-    <p class="rating"><%= book.rating %>/5</p>
+    <p class="rating">
+      <%function getStars(no) { if (no == 1) { return "⭐"; } else if (no == 2)
+      { return "⭐⭐"; } else if (no == 3) { return "⭐⭐⭐"; } else if (no ==
+      4) { return "⭐⭐⭐⭐"; } else { return "⭐⭐⭐⭐⭐"; } }%> <% let stars =
+      getStars(book.rating) %> <%= stars %>
+    </p>
     <form action="/view" method="post">
       <button class="view-notes-btn" name="book_id" value="<%= book.id %>">
         View Notes
