@@ -1,31 +1,40 @@
 import express from "express";
 import bodyParser from "body-parser";
 import axios from "axios";
+import pg from "pg";
 
 const app = express();
 const port = 3000;
 
+const db = new pg.Client({
+  user: "postgres",
+  host: "localhost",
+  database: "bookNote",
+  password: "vedu@#9339",
+  port: 5432,
+});
+db.connect();
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
+
+let res;
+let items;
+
+async function checkList() {
+  res = await db.query("SELECT * FROM book");
+  items = res.rows;
+  console.log(items);
+}
+checkList();
 
 // app.get("/", async (req, res) => {
 //   res.render("index.ejs");
 // });
 
 app.get("/", async (req, res) => {
-  try {
-    // const response = await axios.get(
-    //   "https://covers.openlibrary.org/b/isbn/jod-M.jpg"
-    // );
-    // console.log(response);
-    // const result = response.data;
-    res.render("index.ejs");
-  } catch (error) {
-    console.error("Failed to make request:", error.message);
-    res.render("index.ejs", {
-      error: error.message,
-    });
-  }
+  checkList();
+  res.render("index.ejs", { books: items });
 });
 
 app.get("/add", (req, res) => {

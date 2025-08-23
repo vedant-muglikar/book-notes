@@ -11,29 +11,21 @@
 <!-- Books Library -->
 <section id="books" class="books-grid">
   <!-- Sample Book Card -->
+
+  <% for(let book of books){ %> <% let olid = book.olid; %>
+
   <article class="book-card">
     <img
-      src="https://covers.openlibrary.org/b/olid/OL36647151M-L.jpg"
+      src="https://covers.openlibrary.org/b/olid/<%=book.olid%>-L.jpg"
       alt="Book Cover"
       class="book-thumb" />
-    <h3 class="book-title">Atomic Habits</h3>
+    <h3 class="book-title"><%= book.title %></h3>
     <p class="book-author">James Clear</p>
-    <p class="book-meta">Date Read: Mar 2025</p>
-    <p class="rating">⭐⭐⭐⭐⭐ 9/10</p>
+    <p class="rating"><%= book.rating %>/5</p>
     <button class="view-notes-btn">View Notes</button>
   </article>
-  <!-- Repeat book cards as needed -->
-  <article class="book-card">
-    <img
-      src="https://covers.openlibrary.org/b/olid/OL26314691M-L.jpg"
-      alt="Book Cover"
-      class="book-thumb" />
-    <h3 class="book-title">Deep Work</h3>
-    <p class="book-author">Cal Newport</p>
-    <p class="book-meta">Date Read: Jan 2025</p>
-    <p class="rating">⭐⭐⭐⭐ 8/10</p>
-    <button class="view-notes-btn">View Notes</button>
-  </article>
+
+  <% } %>
 
   <!-- Add more cards -->
 </section>
