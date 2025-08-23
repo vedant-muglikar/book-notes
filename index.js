@@ -39,7 +39,7 @@ async function getBook(id) {
 // });
 
 app.get("/", async (req, res) => {
-  checkList();
+  await checkList();
   res.render("index.ejs", { books: items });
 });
 
@@ -50,14 +50,21 @@ app.get("/add", (req, res) => {
 app.post("/add-book", async (req, res) => {
   const name = req.body.name;
   const converted = name.split(" ").join("+");
+  const notes = req.body.notes;
+  const rating = req.body.rating;
 
   try {
     const response = await axios.get(
       `https://openlibrary.org/search.json?q=${converted}`
     );
-    const result = response.data.docs[0].cover_edition_key;
-    console.log(result);
-    res.render("index.ejs");
+    const book_id = response.data.docs[0].cover_edition_key;
+
+    await db.query(
+      "INSERT INTO book(title, olid, note, rating)VALUES ($1, $2, $3, $4);",
+      [name, book_id, notes, rating]
+    );
+
+    res.redirect("/");
   } catch (error) {
     console.error("Failed to make request:", error.message);
     res.render("index.ejs", {
@@ -68,6 +75,14 @@ app.post("/add-book", async (req, res) => {
 
 app.post("/view", async (req, res) => {
   let id = req.body.book_id;
+  let book = await getBook(id);
+  res.render("view.ejs", { book: book });
+});
+
+app.post("/edit-note", async (req, res) => {
+  const note = req.body.notes;
+  const id = req.body.id;
+  await db.query("UPDATE book SET note=$1 WHERE id=$2", [note, id]);
   let book = await getBook(id);
   res.render("view.ejs", { book: book });
 });

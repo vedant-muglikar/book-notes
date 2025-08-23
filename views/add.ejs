@@ -1,4 +1,41 @@
 <%- include('partials/header.ejs'); -%>
+
+<style>
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 400px;
+    margin: 32px auto;
+    background: #fff;
+    padding: 24px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  label {
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  input,
+  select,
+  textarea,
+  button {
+    font-size: 1rem;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    margin-bottom: 8px;
+    box-sizing: border-box;
+  }
+
+  textarea {
+    min-height: 120px;
+    resize: vertical;
+  }
+</style>
+
 <h2>Add a New Book</h2>
 <form action="/add-book" method="post">
   <label for="name">Name of the Book</label>
@@ -8,7 +45,8 @@
   <textarea
     name="notes"
     id="notes"
-    rows="4"
+    rows="6"
+    cols="40"
     placeholder="Write your notes about the book here..."></textarea>
 
   <label for="rating">Rating</label>

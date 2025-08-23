@@ -5,7 +5,7 @@
   <title><%= book.title %> - Notes</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: "Poppins", sans-serif;
       background: #f7f7f7;
       color: #333;
       margin: 0;
@@ -44,6 +44,36 @@
       margin-bottom: 8px;
       line-height: 1.6;
     }
+    .hidden {
+      display: none;
+    }
+
+    textarea {
+      padding: 0.5rem;
+      width: 100%;
+      font-size: 1rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin-top: 10px;
+      box-sizing: border-box;
+      resize: vertical;
+    }
+
+    button {
+      background-color: var(--accent);
+      color: white;
+      border: none;
+      padding: 0.5rem;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      text-align: center;
+    }
+
+    button {
+      background-color: #4338ca;
+    }
   </style>
 </head>
 <body>
@@ -55,11 +85,30 @@
         alt="Book Cover" />
       <div>
         <h1><%= book.title %></h1>
+        <button onclick="showTextarea()">Edit</button>
       </div>
     </div>
 
     <h2>Notes</h2>
-    <p><%= book.note %></p>
+    <p id="note-text"><%= book.note %></p>
+    <form action="/edit-note" method="post">
+      <input type="hidden" name="id" value="<%= book.id %>" />
+      <textarea name="notes" id="note-area" class="hidden" rows="15" cols="10">
+<%= book.note %></textarea
+      >
+      <button class="hidden" id="sub-note" onclick="showTextarea()">
+        Submit
+      </button>
+    </form>
   </div>
+
+  <script>
+    function showTextarea() {
+      document.getElementById("note-area").classList.toggle("hidden");
+      document.getElementById("note-text").classList.toggle("hidden");
+      document.getElementById("sub-note").classList.toggle("hidden");
+    }
+  </script>
+
   <%- include('partials/footer.ejs'); -%>
 </body>
