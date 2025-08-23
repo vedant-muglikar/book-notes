@@ -20,9 +20,12 @@
       alt="Book Cover"
       class="book-thumb" />
     <h3 class="book-title"><%= book.title %></h3>
-    <p class="book-author">James Clear</p>
     <p class="rating"><%= book.rating %>/5</p>
-    <button class="view-notes-btn">View Notes</button>
+    <form action="/view" method="post">
+      <button class="view-notes-btn" name="book_id" value="<%= book.id %>">
+        View Notes
+      </button>
+    </form>
   </article>
 
   <% } %>

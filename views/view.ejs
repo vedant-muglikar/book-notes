@@ -1,0 +1,65 @@
+<%- include('partials/header.ejs'); -%>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= book.title %> - Notes</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .book-header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .book-header img {
+      width: 120px;
+      border-radius: 8px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+    h2 {
+      margin-top: 30px;
+      font-size: 1.4rem;
+    }
+    ul {
+      margin-top: 10px;
+      padding-left: 20px;
+    }
+    li {
+      margin-bottom: 8px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <% console.log(book); %>
+    <div class="book-header">
+      <img
+        src="https://covers.openlibrary.org/b/olid/<%= book.olid %>-L.jpg"
+        alt="Book Cover" />
+      <div>
+        <h1><%= book.title %></h1>
+      </div>
+    </div>
+
+    <h2>Notes</h2>
+    <p><%= book.note %></p>
+  </div>
+  <%- include('partials/footer.ejs'); -%>
+</body>

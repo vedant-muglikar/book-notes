@@ -24,9 +24,15 @@ let items;
 async function checkList() {
   res = await db.query("SELECT * FROM book");
   items = res.rows;
-  console.log(items);
 }
 checkList();
+
+async function getBook(id) {
+  let book;
+  book = await db.query("SELECT * FROM book WHERE id = $1", [id]);
+  let res = book.rows[0];
+  return res;
+}
 
 // app.get("/", async (req, res) => {
 //   res.render("index.ejs");
@@ -42,7 +48,6 @@ app.get("/add", (req, res) => {
 });
 
 app.post("/add-book", async (req, res) => {
-  console.log(req.body);
   const name = req.body.name;
   const converted = name.split(" ").join("+");
 
@@ -59,6 +64,12 @@ app.post("/add-book", async (req, res) => {
       error: error.message,
     });
   }
+});
+
+app.post("/view", async (req, res) => {
+  let id = req.body.book_id;
+  let book = await getBook(id);
+  res.render("view.ejs", { book: book });
 });
 
 app.listen(port, () => {
